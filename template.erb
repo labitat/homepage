@@ -1,0 +1,73 @@
+<html>
+<head>
+<link rel="stylesheet" href="pico.min.css">
+<style>
+
+
+.banner {
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  padding: .5em;
+  background-color: black;
+  color: white;
+  font-size: 40pt;
+  margin-bottom: .5em;
+}
+
+.banner:before {
+  content: url(logolabitat.png);
+}
+
+@media (prefers-color-scheme: dark) {
+  .banner {
+     color: #eee;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="container">
+    <div class="banner">Labitat</div>
+    <div class="grid">
+      <div>
+        <h2>About</h2>
+        <%= about_section %>
+      </div>
+      <div>
+        <h2>Connect</h2>
+        <%= connect_section %>
+      </div>
+      <div>
+        <h2>Events</h2>
+        <%= events_section %>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <h2>Just visit us!</h2>
+        <%= just_visit_us_section %>
+      </div>
+      <div>
+      <img src="Labi_sign.jpg">
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <h2>Events</h2>
+        <% events.each do |event| %>
+          <p><b><a href="<%= event.url %>"><%= event.summary %></a></b></p>
+          <p><%= event.dtstart %></p>
+          <p><%= event.description %></p>
+        <% end %>
+      </div>
+    </div>
+  </main>
+
+
+</body>
+</html>
