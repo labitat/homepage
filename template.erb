@@ -30,7 +30,7 @@
 </head>
 <body>
   <main class="container">
-    <div class="banner">Labitat</div>
+    <div class="banner">Labitat <a style="margin-left: auto" href="https://labitat.dk/wiki/Donate" role="button">Donate now!</a></div>
     <div class="grid">
       <div>
         <h2>About</h2>
@@ -58,12 +58,31 @@
 
     <div class="grid">
       <div>
-        <h2>Events</h2>
+        <h2>Upcoming events</h2>
         <% events.each do |event| %>
-          <p><b><a href="<%= event.url %>"><%= event.summary %></a></b></p>
-          <p><%= event.dtstart %></p>
-          <p><%= event.description %></p>
+          <% if event.description != event.summary %>
+            <details>
+              <summary><b><a href="<%= event.url %>"><%= event.summary %></a><br>@ <%= event.dtstart %></b></summary>
+              <%= markdown.render(event.description.to_s) %>
+            </details>
+          <% else %>
+            <p><b><a href="<%= event.url %>"><%= event.summary %></a></b></p>
+          <% end %>
         <% end %>
+      </div>
+      <div>
+        <h2>Recent wiki changes</h2>
+        <% wiki_changes.each do |item| %>
+          <p><b><a href="<%= item.link.href %>"><%= item.title.content %></a></b></p>
+          <p><%= time_ago_in_words(item.updated.content) %> ago</p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <h3>Upcoming events</h3>
+        <%= everything_else_section %>
       </div>
     </div>
   </main>

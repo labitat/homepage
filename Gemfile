@@ -4,4 +4,6 @@ source "https://rubygems.org"
 
 gem "nokogiri"
 gem "icalendar"
-gem "mediawiki_api"
+gem "rss"
+gem "actionview"
+gem "redcarpet"
