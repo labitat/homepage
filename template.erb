@@ -16,8 +16,9 @@
   margin-bottom: .5em;
 }
 
-.banner:before {
-  content: url(logolabitat.png);
+.logo {
+  max-width: 100px;
+  margin-right: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,7 +31,7 @@
 </head>
 <body>
   <main class="container">
-    <div class="banner">Labitat <a style="margin-left: auto" href="https://labitat.dk/wiki/Donate" role="button">Donate now!</a></div>
+    <div class="banner"><img class="logo" src="logo.svg">Labitat <a style="margin-left: auto" href="https://labitat.dk/wiki/Donate" role="button">Donate now!</a></div>
     <div class="grid">
       <div>
         <h2>About</h2>
@@ -62,19 +63,19 @@
         <% events.each do |event| %>
           <% if event.description != event.summary %>
             <details>
-              <summary><b><a href="<%= event.url %>"><%= event.summary %></a><br>@ <%= event.dtstart %></b></summary>
+              <summary><b><a href="<%= event.url %>"><%= event.summary %></a></b><br>@ <%= event.dtstart %></summary>
               <%= markdown.render(event.description.to_s) %>
             </details>
           <% else %>
-            <p><b><a href="<%= event.url %>"><%= event.summary %></a></b></p>
+            <p><b><a href="<%= event.url %>"><%= event.summary %></a></b><br>@ <%= event.dtstart %></p>
           <% end %>
         <% end %>
       </div>
       <div>
         <h2>Recent wiki changes</h2>
         <% wiki_changes.each do |item| %>
-          <p><b><a href="<%= item.link.href %>"><%= item.title.content %></a></b></p>
-          <p><%= time_ago_in_words(item.updated.content) %> ago</p>
+          <p><b><a href="<%= item.link.href %>"><%= item.title.content %></a></b><br>
+          <%= time_ago_in_words(item.updated.content) %> ago</p>
         <% end %>
       </div>
     </div>
