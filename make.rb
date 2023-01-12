@@ -25,7 +25,7 @@ end
 
 markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
 
-home_page = Nokogiri::HTML(File.read("home_page.html"))
+home_page = Nokogiri::HTML(File.read("out/home_page.html"))
 
 about_section = make_section(home_page, "About")
 events_section = make_section(home_page, "Events")

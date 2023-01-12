@@ -2,7 +2,6 @@
 
 set -e
 
-curl https://labitat.dk/wiki/Home_page > home_page.html
-mkdir -p build
+curl https://labitat.dk/wiki/Home_page > out/home_page.html
 ruby make.rb
 cp assets/* build/
