@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "nokogiri"
 require "erb"
 require "net/http"
@@ -7,6 +8,9 @@ require "action_view"
 require "redcarpet"
 
 include ActionView::Helpers::DateHelper
+
+Encoding.default_external = "UTF-8"
+
 # fetch page
 # re-assemble it into template
 #   <h2><span class="mw-headline"
@@ -36,7 +40,7 @@ template = ERB.new File.read("template.erb")
 
 uri = URI("https://labitat.dk/events.ics")
 calendar = Net::HTTP.get(uri)
-cal = Icalendar::Calendar.parse(calendar).first
+cal = Icalendar::Calendar.parse(calendar.force_encoding(Encoding::UTF_8)).first
 count = 0
 events = cal.events.select { |e| e.dtstart > Time.now }.first(5)
 
