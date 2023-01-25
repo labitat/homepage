@@ -1,4 +1,6 @@
-build
-home_page.html
+/build
+/out
+/bin
+/lib
 
 .DS_Store
