@@ -8,7 +8,7 @@ show() {
 }
 
 show curl -fLo out/home_page.html --no-progress-meter https://labitat.dk/wiki/Home_page
-show ruby make.rb
+show bin/bundle exec ruby make.rb
 
 for src in assets/*; do
   dst="build/${src#assets/}"
