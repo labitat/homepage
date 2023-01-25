@@ -1,7 +1,16 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
-curl https://labitat.dk/wiki/Home_page > out/home_page.html
-ruby make.rb
-cp assets/* build/
+show() {
+  echo "+ $*"
+  "$@"
+}
+
+show curl -fLo out/home_page.html --no-progress-meter https://labitat.dk/wiki/Home_page
+show ruby make.rb
+
+for src in assets/*; do
+  dst="build/${src#assets/}"
+  [ "$dst" -nt "$src" ] || show cp "$src" "$dst"
+done
