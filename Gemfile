@@ -2,8 +2,8 @@
 
 source "https://rubygems.org"
 
-gem "nokogiri"
-gem "icalendar"
-gem "rss"
-gem "actionview"
-gem "redcarpet"
+gem "nokogiri", "~>1.14.0"
+gem "icalendar", "~>2.8.0"
+gem "rss", "~>0.2.9"
+gem "actionview", "~>7.0.4"
+gem "redcarpet", "~>3.5.1"
